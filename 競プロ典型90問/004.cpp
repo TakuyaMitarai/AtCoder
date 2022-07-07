@@ -17,17 +17,22 @@ int main()
         }
     }
 
-    //列,行合計値
+    //行の合計値
     for(int i = 1; i <= H; i++) {
         for(int j = 1; j <= W; j++){
             sum += A[i][j];
-            sum1 += A[j][i];
         }
         H_sum[i] = sum;
-        W_sum[i] = sum1;
         sum = 0;
-        sum1 = 0;
     }
+    //列の合計値
+    for(int i = 1; i <= W; i++) {
+        for(int j = 1; j <= H; j++) {
+            sum1 += A[j][i];
+        }
+        W_sum[i] = sum1;
+        sum1 = 0;
+    }  
     
     //出力
     for(int i = 1; i <= H; i++) {
@@ -37,4 +42,3 @@ int main()
         cout << endl;
     }
 }
-//更新
