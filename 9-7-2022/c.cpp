@@ -8,7 +8,9 @@ using namespace std;
 int main()
 {
     string S, T;
-    string s1[1 << 17], t1[1 << 17];
+    vector<string> s1, t1;
+    s1.resize(1 << 18);
+    t1.resize(1 << 18);
     //入力
     cin >> S >> T;
 
@@ -32,17 +34,19 @@ int main()
             t1[cnt_t].push_back(T[i]);
         }
     }
-    if(cnt_s == cnt_t){
-        for(int i = 0; i < cnt_s + 1; i++) {
-            if(s1[i] == t1[i]) {
-                if(i ==  cnt_s) cout << "Yes" << endl;
-            } else {
-                if(s1[i].length() > 1 && t1[i].length() > 1) {
-                    if(i ==  cnt_s) cout << "Yes" << endl;
+    int s1_size = cnt_s + 1, t1_size = cnt_t + 1;
+    if(s1_size == t1_size){
+        for(int i = 0; i < s1_size; i++) {
+            if(s1[i][0] == t1[i][0]) {
+                if((s1[i].length() > 1 && t1[i].length() >= s1[i].length()) || (s1[i].length() == 1 && t1[i].length() == 1)){
+                    if(i ==  s1_size - 1) cout << "Yes" << endl;
                 } else {
                     cout << "No" << endl;
                     break;
                 }
+            } else {
+                cout << "No" << endl;
+                break;
             }
         }
     }else {
