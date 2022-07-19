@@ -6,6 +6,7 @@ using namespace std;
 
 stack <double> S;
 
+//逆ポーランド記法
 int main()
 {
     string a;
